@@ -1,0 +1,37 @@
+pid_controller_node:
+  ros__parameters:
+    initial_conditions:
+      dt: 0.1 # per impostare la frequenza di esecuzione del nodo (dt = 0.1 s -> periodo di 100 ms -> 10 volte al secondo)
+      feedback: 0.0
+      kp: 1.0 # capire
+      ki: 0.0
+      kd: 0.0
+      flap_angle_limit_min: -20.0
+      flap_angle_limit_max: 20.0
+      neutral_flap_angle: 0.0
+      cutoff_freq: 0.5
+      height_target: 0.5
+      current_sog: 0.0
+      current_roll: 0.0
+      current_pitch: 0.0
+      sog_threshold: -1.0
+      roll_max: 70.0
+      pitch_max: 45.0
+      gear_ratio: 1.0
+      servo_offset: 0.0
+    GUI_limits:
+      kp_min: 1.0 # capire
+      kp_max: 100.0
+      kp_step: 5.0
+      ki_min: 0.0
+      ki_max: 10.0
+      ki_step: 0.1
+      kd_min: 0.0
+      kd_max: 10.0
+      kd_step: 0.1
+      height_min: 0.0
+      height_max: 1.5
+      height_step: 0.1
+      flap_angle_limit_min: -30.0
+      flap_angle_limit_max: 30.0
+      flap_step: 1.0

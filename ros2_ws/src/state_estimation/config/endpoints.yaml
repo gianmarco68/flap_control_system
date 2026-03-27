@@ -1,0 +1,47 @@
+# /ros2_ws/src/state_estimation/config/endpoints.yaml
+meta:
+  generate:
+    cpp: true
+    python: false
+
+topics:
+  # INPUT
+  gps_data: "/gps_data"
+  imu_data: "/imu_data"
+  wand_angle: "/wand_angle"
+  
+  # INTERMEDI (per l'EKF)
+  gps_data_fixed: "/gps/data_fixed" # <-- AGGIUNTO QUESTO
+  gps_odom_local: "/gps/odom_local"
+  filtered_odom: "/odometry/filtered"
+
+  # OUTPUT
+  current_height_est: "/current_height_est"
+  gps_filtered: "/gps/filtered"
+
+nodes:
+  height_estimator_node:
+    sub:
+      wand_angle: "@wand_angle"
+      imu_data: "@imu_data"
+    pub:
+      current_height_est: "@current_height_est"
+
+  gps_header_fixer_node: # <-- AGGIUNTO QUESTO NODO
+    sub:
+      gps_data: "@gps_data"
+    pub:
+      gps_data_fixed: "@gps_data_fixed"
+
+  gps_input_adapter:
+    sub:
+      gps_data_fixed: "@gps_data_fixed" # <-- ORA ASCOLTA QUELLO RIPULITO
+    pub:
+      gps_odom_local: "@gps_odom_local"
+
+  gps_output_adapter:
+    sub:
+      filtered_odom: "@filtered_odom"
+      gps_data: "@gps_data" 
+    pub:
+      gps_filtered: "@gps_filtered"

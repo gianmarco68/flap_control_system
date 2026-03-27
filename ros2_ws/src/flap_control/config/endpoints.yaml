@@ -1,0 +1,46 @@
+# /ros2_ws/src/flap_control/config/endpoints.yaml
+# AUTO: single source of truth per topic names + “wiring” per nodo.
+# Nota: i valori tipo "@imu_data" sono reference a "topics.<key>".
+
+meta:
+  generate:
+    cpp: true
+    python: false
+
+topics:
+  # ====== INPUT (sensori / sorgenti) ======
+  current_height_est: "/current_height_est"
+  gps_vel_data: "/gps_vel_data"
+  imu_data: "/imu_data"
+  wand_angle: "/wand_angle"
+  # odometry_local: "/odometry/local"
+
+  # ====== INPUT (comandi / controller) ======
+  local_cmd_update: "/local_cmd/update"
+  show_servo_angle_cmd: "/processed/manual_servo_cmd"
+
+  can_command: "/can_command"
+
+  # ====== OUTPUT (processed) ======
+  pid_indicators: "/pid_indicators"
+  control_value: "/control_value"
+
+nodes:
+  pid_controller_node:
+    sub:
+      # odometry_local: "@odometry_local"
+      current_height_est: "@current_height_est"
+      gps_vel_data: "@gps_vel_data"
+      imu_data: "@imu_data"
+      local_cmd_update: "@local_cmd_update"
+      show_servo_angle_cmd: "@show_servo_angle_cmd"
+    pub:
+      pid_indicators: "@pid_indicators"
+      control_value: "@control_value"
+
+  flap_controller_node:
+    sub:
+      # control_value: "@control_value"
+      control_value: "@control_value"
+    pub:
+      can_command: "@can_command"
