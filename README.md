@@ -15,6 +15,8 @@ Although not fully published here, the complete ecosystem I worked within relies
 * **Computing Core:** A main Raspberry Pi running a containerized **ROS2** environment via **Docker** to ensure implementation and testing.
 * **Hardware Interface:** A **CAN bus** network orchestrating the communication between custom PCBs, microcontrollers, sensors and actuators.
 * **Telemetry & Web App:** A secondary Raspberry Pi dedicated to WiFi telemetry, transmitting real-time data to a custom Web Application used for live monitoring and active testing functions.
+To have a more general understanding of how the full system works and what are the main components this is the repository of the 2025 Software 
+https://github.com/Sailing-Team-Polimi/2025_SOFTWARE.git
 
 ---
 
