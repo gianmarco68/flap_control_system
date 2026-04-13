@@ -58,7 +58,7 @@ void HeightEstimatorNode::wand_callback(const std_msgs::msg::Float64::SharedPtr 
 
 double HeightEstimatorNode::getZest()
 {
-    double z_est = (wand_length_ * std::cos(alpha_rad_) * std::sin(wand_angle_rad_) 
+    double z_est = (wand_length_ * std::cos(alpha_rad_) * std::sin(wand_angle_rad_ - pitch_rad_) 
                   + d_ * std::sin(pitch_rad_)) * std::cos(roll_rad_);
     return z_est;
 }
